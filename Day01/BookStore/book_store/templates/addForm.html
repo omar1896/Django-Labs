@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+{% block title %}
+   
+Add-Book
+{% endblock %}
+{%block main-content%}
+<div class="alert alert-success d-flex justify-content-center"><h5>Add-book-Form</h5></div>
+
+<div class="container-fluid d-flex justify-content-center">
+<div class="row col-8">
+<form action="{% url 'bookstore:book-store'%}" class=" form-control" method="post">
+    {% csrf_token %}
+    <div class="m-1">
+        <label for="name">Name</label>
+            <input class="form-control" type="text" id="name" name="name">
+    </div>       
+        <div class="m-1">
+            <label for="price">Price</label>
+            <input class="form-control" type="text" id="price" name="price">
+    </div>
+    <div class="m-1">
+        <label for="description">description</label>
+        <textarea class="form-control" type="text" id="description" name="description"></textarea>
+</div>
+<div class="m-1 d-flex justify-content-center">
+    <input type="submit" name="" id="" value="Add" class="btn btn-info">
+</div>
+
+</form>
+</div>
+</div>
+{%endblock%}
