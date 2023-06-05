@@ -1,25 +1,45 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 
-# Create your models here.
-books_list = [
-    {
+class Users(models.Model):
+     name=models.CharField("name",max_length=50)
+     phone=models.CharField("phone",max_length=15)
+
+     
+class ISBN(models.Model):
+     isbn=models.BigAutoField(primary_key=True)    
+     author_title=models.CharField(max_length=50)
+     book_title=models.CharField(max_length=50,validators=[MinValueValidator(10)])
+
+
+class Books(models.Model):
+    ISBN = models.OneToOneField(
+        ISBN,
+        on_delete=models.CASCADE,
        
-        'id': 1,
-        'name': 'Book-1',
-        'price': 1,
-        'description': "Programming book",
-    },
-    {
-       
-        'id': 2,
-        'name': 'Book-2',
-        'price': 4,
-        'description': "SCI-fiction book",
-    },
-    {
-        'id': 3,
-        'name': 'Book-3',
-        'price': 2,
-        'description': "English book",
-    },
-]
+    )
+    slug=models.SlugField(default="")
+    title=models.CharField("title",max_length=50)
+    views=models.IntegerField()
+    rate=models.IntegerField()
+    description=models.TextField('description')
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)
+
+
+
+    
+
+class Category(models.Model):
+      Name_of_Categories = [
+        ("hrr", "Horror"),
+        ("cd", "Comedy"),
+        ("dra", "Drama"),
+        ("sci", "Science"),
+        ("hs", "History"),
+    ]
+      name=models.CharField( choices=Name_of_Categories,max_length=20,validators=[MinValueValidator(2)])
+      book = models.ForeignKey(Books, on_delete=models.CASCADE)
+
+
+
+

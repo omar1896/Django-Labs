@@ -5,23 +5,24 @@
 {% endblock %}
 
 {% block main-content %}
- <h1> {{ book_name }}: details </h1>
+ <h1> {{ book.title }}: details </h1>
  <table class="table">
     <thead>
         <tr>
             <td> ID </td>
             <td> Name </td>
-            <td> Price </td>
             <td> Description </td>
+            <td> rate </td>
         </tr>
     </thead>
     <tbody>
 
-        <tr {% if book_price > 2 %} style="color:red" {% else %} style="color:green" {% endif %} >
-            <td>{{ book_id }} </td>
-            <td>{{ book_name }} </td>
-            <td> {{ book_price }}</td>
-            <td> {{ book_description | truncatewords:3 | title }} </td>
+        <tr {% if book.price > 2 %} style="color:red" {% else %} style="color:green" {% endif %} >
+            <td>{{ book.id }} </td>
+            <td>{{ book.title }}</td>
+            <td> {{ book.description | truncatewords:3 | title }} </td>
+            <td> {{ book.rate}}</td>
+
         </tr>
     </tbody>
 

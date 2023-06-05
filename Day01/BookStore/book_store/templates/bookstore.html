@@ -17,7 +17,7 @@
     <tr>
         <td> ID </td>
         <td> Name </td>
-        <td> Price </td>
+        <td> views </td>
         <td> Description </td>
         <td> Actions </td>
     </tr>
@@ -27,8 +27,8 @@
     {% for book in books_list%}
    <tr {% if book.price > 3 %} style="color:red" {% else %} style="color:green" {% endif %} >
     <td> {{ book.id }} </td>
-    <td> {{ book.name }} </td>
-    <td> {{ book.price }}$ </td>
+    <td> {{ book.title }} </td>
+    <td> {{ book.views }} </td>
     <td> {{ book.description | truncatewords:2  | title }} </td>
     
     <td> 

@@ -11,13 +11,17 @@ Add-Book
 <form action="{% url 'bookstore:book-store'%}" class=" form-control" method="post">
     {% csrf_token %}
     <div class="m-1">
-        <label for="name">Name</label>
-            <input class="form-control" type="text" id="name" name="name">
+        <label for="title">title</label>
+            <input class="form-control" type="text" id="title" name="title">
     </div>       
         <div class="m-1">
-            <label for="price">Price</label>
-            <input class="form-control" type="text" id="price" name="price">
+            <label for="rate">rate</label>
+            <input class="form-control" type="text" id="rate" name="rate">
     </div>
+    <div class="m-1">
+        <label for="view">view</label>
+        <input class="form-control" type="text" id="view" name="views">
+</div>
     <div class="m-1">
         <label for="description">description</label>
         <textarea class="form-control" type="text" id="description" name="description"></textarea>

@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect
 import random
-from ..models import books_list
+from ..models import Books
 
 
 
@@ -13,17 +13,13 @@ def book_add(request):
 @csrf_protect
 def book_store(request):
    if request.method == 'POST':
-    name=request.POST.get('name')
-    price=request.POST.get('price')
+    name=request.POST.get('title')
+    rate=request.POST.get('rate')
+    views=request.POST.get('views')
+
     description=request.POST.get('description')
+    Books.objects.create(title=name,rate=rate,description=description,views=views)
 
-    newbook={'id':random.randint(1, 100),
-             'name':name,
-             'price':price,
-             'description':description
-             }
-
-    books_list.append(newbook)
     print(request.POST)
 
     return redirect('bookstore:books-index') 

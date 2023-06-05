@@ -10,12 +10,11 @@ app_name = 'bookstore'
 
 urlpatterns = [
     path('index', index, name='books-index'),
-    path('books_list/', book_list, name="books-list"),
     path('book_add', book_add, name="book-add"),
     path('book_store', book_store, name="book-store"),
-    path('book_detail/<int:book_id>', book_detail, name="book-detail"),
-    path('book_delete/<int:book_id>', book_delete, name="book-delete"),
-    path('book_update/<int:book_id>', book_update, name="book-update"),
-    path('book_store/<int:book_id>', book_edit , name="book-edit"),
+    path('book_detail/<int:pk>', book_detail, name="book-detail"),
+    path('book_delete/<int:pk>', book_delete, name="book-delete"),
+    path('book_update/<int:pk>', book_update, name="book-update"),
+    path('book_store/<int:pk>', book_edit , name="book-edit"),
 
 ]
